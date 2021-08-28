@@ -7,7 +7,8 @@ const morgan = require('morgan');
 const db = require('./models');
 const passport = require('passport');
 const passportConfig = require('./passport');
-
+const hpp = require('hpp');
+const helmet = require('helmet')
 const userRouter = require('./routes/user');
 const dayRouter = require('./routes/day');
 const planRouter = require('./routes/plan');
@@ -30,8 +31,14 @@ app.use(cors({
     credentials: true, //이걸 해줘야 cookie도 같이 보낼 수 있다.
 }));
 
+if(process.env.NODE_ENV === 'production'){
+    app.use(morgan('combined'));
+    app.use(hpp());
+    app.use(helmet())
+}else{
+    app.use(morgan('dev'));
+}
 
-app.use(morgan('dev'));
 app.use(express.urlencoded({extended : true}));
 app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -52,7 +59,7 @@ app.use('/plan', planRouter);
 
 
 app.get('/', (req, res) => {
-    res.send("Plan Manager");
+    res.send("MyLifeManager");
 })
 
 app.use((req, res, next) => {
