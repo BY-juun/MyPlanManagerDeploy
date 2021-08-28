@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next -p 3000",
-    "build": "ANALYZE=true NODE_ENV=production next build"
+    "build": "ANALYZE=true NODE_ENV=production next build",
+    "start" : "NODE_ENV=production next start -p 3000"
   },
   "author": "",
   "license": "ISC",
