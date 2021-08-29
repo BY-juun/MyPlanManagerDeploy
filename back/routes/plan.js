@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { Plan } = require('../models'); 
 const { Day } = require('../models'); 
-const plan = require('../models/plan');
 const {isLoggedIn, isNotLoggedIn} = require('./middlewares');
 
 router.post('/time',isLoggedIn,async(req,res,next)=>{
@@ -10,6 +9,7 @@ router.post('/time',isLoggedIn,async(req,res,next)=>{
         const theplan = await Plan.findOne({
             where : {id : req.body.id}
         });
+
         if(!theplan){
             return res.status(403).send("존재하지 않는 계획입니다.");
         }
@@ -27,6 +27,25 @@ router.post('/time',isLoggedIn,async(req,res,next)=>{
         next(error);
     }
 })
+
+router.delete('/:PlanId',isLoggedIn,async(req,res,next)=>{
+    try{
+        console.log(req.body.id);
+        const plan = await Plan.findOne({
+            where : {id : req.params.PlanId}
+        });
+        if(!plan) {
+            return res.status(403).send("존재하지 않는 계획입니다.");
+        }
+        await Plan.destroy({
+            where : {id : req.params.PlanId}
+        });
+        return res.status(201).send(req.params.PlanId);
+    }catch(error){
+        console.error(error);
+        next(error);
+    }
+});
 
 router.post('/',isLoggedIn,async(req,res,next)=>{ //plan등록 req.body.dayInfo 와 req.body.plan이 온다.
     try{

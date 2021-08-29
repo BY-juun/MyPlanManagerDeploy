@@ -7,10 +7,12 @@ import {
 import DateFnsUtils from '@date-io/date-fns';
 import { makeStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
-import { useDispatch } from 'react-redux';
-import { SUBMIT_TIME_REQUEST } from '../reducers/plan';
+import { useDispatch,useSelector } from 'react-redux';
+import { SUBMIT_TIME_REQUEST,DELETE_PLAN_REQUEST} from '../reducers/plan';
 import AlarmOnIcon from '@material-ui/icons/AlarmOn';
 import Router from 'next/router';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import { Snackbar } from '@material-ui/core'
 import MuiAlert from '@material-ui/lab/Alert';
@@ -24,7 +26,6 @@ function Alert(props) {
 const useStyles = makeStyles((theme) => ({
     root: {
         marginTop: "15px",
-        marginLeft: "80px",
     },
     timepicker: {
         width: "160px",
@@ -32,9 +33,10 @@ const useStyles = makeStyles((theme) => ({
         marginRight: "10px",
     },
     button: {
-        float: "right",
-        marginTop: "10px",
-        border: "none",
+        marginTop: "15px",
+        marginBottom : "15px",
+        marginLeft : "15px",
+        marginRight : "15px"
     },
     chip: {
         marginLeft: "80px",
@@ -51,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     },
     snackbar: {
         marginBottom: "70px",
-    }
+    },
 }));
 
 const ScheduleList = ({ value, id, PropStartTime, PropEndTime, PropTotalTime }) => {
@@ -61,6 +63,13 @@ const ScheduleList = ({ value, id, PropStartTime, PropEndTime, PropTotalTime }) 
     const [endTime, setEndTime] = useState(PropEndTime);
     const [open, setOpen] = useState(false);
     const [totaltimeerror, setTotaltimeerror] = useState(false);
+    const {deletePlanDone} = useSelector((state)=>state.plan);
+
+    useEffect(()=>{
+        if(deletePlanDone){
+            Router.push('/Today');
+        }
+    },[deletePlanDone])
 
     const onChangeStartTime = useCallback((date) => {
         setStartTime(date);
@@ -109,7 +118,14 @@ const ScheduleList = ({ value, id, PropStartTime, PropEndTime, PropTotalTime }) 
                 startTime, endTime, totaltime, id
             }
         })
-    }, [startTime, endTime])
+    }, [startTime, endTime]);
+
+    const onClickDelete = useCallback(() => {
+        return dispatch({
+            type : DELETE_PLAN_REQUEST,
+            data : id,
+        })
+    });
     return (
         <>
             <div className={classes.mainWrapper}>
@@ -117,12 +133,6 @@ const ScheduleList = ({ value, id, PropStartTime, PropEndTime, PropTotalTime }) 
                     ? <Chip label={value} className={classes.root} color="primary" variant="outlined" />
                     : <Chip label={value} className={classes.root} variant="outlined" />
                 }
-
-                {PropStartTime && PropEndTime && PropTotalTime
-                    ? <Button variant="outlined" color="secondary" className={classes.button} >제출완료</Button>
-                    : <Button variant="outlined" color="primary" className={classes.button} onClick={submitTime}>제출</Button>
-                }
-
                 <div>
                     {PropEndTime
                         ? <div className={classes.totlatimeDiv}><AlarmOnIcon className={classes.clearIcon} /><div >
@@ -156,8 +166,17 @@ const ScheduleList = ({ value, id, PropStartTime, PropEndTime, PropTotalTime }) 
                             </MuiPickersUtilsProvider>
                         </>
                     }
-
+                    
                 </div>
+                
+                {PropStartTime && PropEndTime && PropTotalTime
+                    ? null
+                    :
+                    <>
+                    <Button variant="outlined" color="secondary" className={classes.button} onClick = {onClickDelete}>삭제</Button> 
+                    <Button variant="outlined" color="primary" className={classes.button} onClick={submitTime}>제출</Button>
+                    </>
+                }
             </div>
             <Snackbar open={open} autoHideDuration={3000} className={classes.snackbar} onClose = {handleClose}>
                 <Alert severity="error" onClose = {handleClose}>

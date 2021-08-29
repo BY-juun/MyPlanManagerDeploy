@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop : "50px",
     },
     mainWrapper : {
-        textAlign : "center", marginTop : "180px"
+        textAlign : "center", marginTop : "130px"
     },
     mainMessage : {
         fontSize : "30px",color : "grey",marginTop : "15px"

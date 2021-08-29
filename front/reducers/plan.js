@@ -4,6 +4,9 @@ export const initialState = {
     submitPlanLoading: false,
     submitPlanDone: false,
     submitPlanError: null,
+    deletePlanLoading: false,
+    deletePlanDone: false,
+    deletePlanError: null,
     submitTimeLoading: false,
     submitTimeDone: false,
     submitTimeError: null,
@@ -13,6 +16,11 @@ export const initialState = {
 export const SUBMIT_PLAN_REQUEST = 'SUBMIT_PLAN_REQUEST';
 export const SUBMIT_PLAN_SUCCESS = 'SUBMIT_PLAN_SUCCESS';
 export const SUBMIT_PLAN_FAILURE = 'SUBMIT_PLAN_FAILURE';
+
+export const DELETE_PLAN_REQUEST = 'DELETE_PLAN_REQUEST';
+export const DELETE_PLAN_SUCCESS = 'DELETE_PLAN_SUCCESS';
+export const DELETE_PLAN_FAILURE = 'DELETE_PLAN_FAILURE';
+
 
 export const SUBMIT_TIME_REQUEST = 'SUBMIT_TIME_REQUEST';
 export const SUBMIT_TIME_SUCCESS = 'SUBMIT_TIME_SUCCESS';
@@ -35,6 +43,19 @@ const reducer = (state = initialState, action) =>
             case SUBMIT_PLAN_FAILURE:
                 draft.submitPlanLoading = false;
                 draft.submitPlanError = action.error;
+                break;
+            case DELETE_PLAN_REQUEST:
+                draft.deletePlanLoading = true;
+                draft.deletePlanError = null;
+                draft.deletePlanDone = false;
+                break;
+            case DELETE_PLAN_SUCCESS:
+                draft.deletePlanLoading = false;
+                draft.deletePlanDone = true;
+                break;
+            case DELETE_PLAN_FAILURE:
+                draft.deletePlanLoading = false;
+                draft.deletePlanError = action.error;
                 break;
             case SUBMIT_TIME_REQUEST:
                 draft.submitTimeLoading = true;
