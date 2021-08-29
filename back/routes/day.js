@@ -59,23 +59,29 @@ router.post('/',isLoggedIn,async(req,res,next)=>{
 
 router.get('/today',isLoggedIn,async(req,res,next)=>{
     try{
+        const curr = new Date();
+        const utc = curr.getTime() +
+            (curr.getTimezoneOffset() * 60 * 1000);
+        const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
+        const kr_curr =
+            new Date(utc + (KR_TIME_DIFF));
         let today;
-        if (new Date().getMonth() + 1 < 10) {
-            if(new Date().getDate()<10){
-                today = (String(new Date().getFullYear()) + "0" + String(new Date().getMonth() + 1) + "0" +String(new Date().getDate()))
+        if (kr_curr.getMonth() + 1 < 10) {
+            if(kr_curr.getDate()<10){
+                today = (String(kr_curr.getFullYear()) + "0" + String(kr_curr.getMonth() + 1) + "0" +String(kr_curr.getDate()))
             }else{
-                today = (String(new Date().getFullYear()) + "0" + String(new Date().getMonth() + 1) + String(new Date().getDate()))
+                today = (String(kr_curr.getFullYear()) + "0" + String(kr_curr.getMonth() + 1) + String(kr_curr.getDate()))
             }
            
         } else {
-            if(new Date().getDate()<10){
-                today = (String(new Date().getFullYear()) + String(new Date().getMonth() + 1) + "0" +String(new Date().getDate()))
+            if(kr_curr.getDate()<10){
+                today = (String(kr_curr.getFullYear()) + String(kr_curr.getMonth() + 1) + "0" +String(kr_curr.getDate()))
             }else{
-                today = (String(new Date().getFullYear()) + String(new Date().getMonth() + 1) + String(new Date().getDate()))
+                today = (String(kr_curr.getFullYear()) + String(kr_curr.getMonth() + 1) + String(kr_curr.getDate()))
             }
         }
         today = Number(today);
-        
+        console.log(today);
         const todayPlan = await Day.findOne({
             where : {
                 dayinfo : today
