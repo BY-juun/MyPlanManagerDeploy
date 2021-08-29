@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next -p 3000",
     "build": "ANALYZE=true NODE_ENV=production next build",
-    "start" : "NODE_ENV=production next start -p 80"
+    "start": "NODE_ENV=production next start -p 80"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +25,7 @@
     "immer": "^9.0.5",
     "next": "^11.1.0",
     "next-redux-wrapper": "^7.0.2",
+    "pm2": "^5.1.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
