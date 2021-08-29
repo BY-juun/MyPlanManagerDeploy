@@ -19,7 +19,7 @@ module.exports={
   "production": {
     "username": "root",
     "password": process.env.DB_PASSWORD,
-    "database": "MyLifeManager.com",
+    "database": "MyLifeManager",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
