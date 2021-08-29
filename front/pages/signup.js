@@ -102,7 +102,6 @@ const signup = () => {
     if (password !== passwordCheck) {
       return setPasswordError(true);
     }
-    console.log('dd');
     return dispatch({
       type: SIGN_UP_REQUEST,
       data: {

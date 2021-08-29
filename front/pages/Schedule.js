@@ -130,12 +130,10 @@ const Schedule = () => {
                 dayInfo = (String(date.getFullYear()) + String(date.getMonth() + 1) + String(date.getDate()))
             }
         }
-        console.log(dayInfo);
         setDayinfo(Number(dayInfo));
     }, [selectedDate]);
 
     const submitDate = useCallback(() => {
-        console.log(dayinfo);
         if(!dayinfo){
             setSelectedDate(null);
             return setDayinfoerror(true);

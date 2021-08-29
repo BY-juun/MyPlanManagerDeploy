@@ -73,12 +73,10 @@ const ScheduleList = ({ value, id, PropStartTime, PropEndTime, PropTotalTime }) 
 
     const onChangeStartTime = useCallback((date) => {
         setStartTime(date);
-        console.log(date);
     }, [startTime]);
 
     const onChangeEndTime = useCallback((date) => {
         setEndTime(date);
-        console.log(date);
     }, [endTime]);
 
     const handleClose = (event, reason) => {
@@ -91,10 +89,6 @@ const ScheduleList = ({ value, id, PropStartTime, PropEndTime, PropTotalTime }) 
 
     const submitTime = useCallback(() => {
         let totaltime = null;
-        console.log(startTime);
-        console.log(endTime);
-        console.log(new Date(PropStartTime));
-
         if (startTime) {
             if (endTime) {
                 if (startTime > endTime) {

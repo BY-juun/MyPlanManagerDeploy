@@ -81,7 +81,6 @@ router.get('/today',isLoggedIn,async(req,res,next)=>{
             }
         }
         today = Number(today);
-        console.log(today);
         const todayPlan = await Day.findOne({
             where : {
                 dayinfo : today

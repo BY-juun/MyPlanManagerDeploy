@@ -54,10 +54,8 @@ const PastPlanList = ({dayinfo, planList}) => {
         if(planList){
             setTotaltime(0);
             planList.map((value,index)=>{
-                console.log(value.totaltime);
                 setTotaltime(prevTotaltime => prevTotaltime + value.totaltime)
             })
-            console.log(totaltime);
         }
     },[planList])
     return(

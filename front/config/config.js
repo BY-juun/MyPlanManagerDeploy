@@ -1,1 +1,1 @@
-export const backUrl = "http://api.recordmyday.com";
+export const backUrl = "https://api.recordmyday.com";
