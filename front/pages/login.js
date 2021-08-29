@@ -118,17 +118,17 @@ const login = () => {
                 </form>
                     <div className={classes.inputWrapper}>
                         <Button href={`${backUrl}/user/kakao`} variant="outlined" size="medium" color="primary" type="submit" className={classes.inputField} startIcon={<RiKakaoTalkLine />}>
-                            카카오톡 회원가입
+                            카카오톡 로그인
                         </Button>
                     </div>
                     <div sclassName={classes.inputWrapper}>
                         <Button href={`${backUrl}/user/facebook`}variant="outlined" size="medium" color="primary" type="submit" className={classes.inputField} startIcon={<AiOutlineFacebook />}>
-                            페이스북 회원가입
+                            페이스북 로그인
                         </Button>
                     </div>
                     <div className={classes.inputWrapper}>
                         <Button href={`${backUrl}/user/google`} variant="outlined" size="medium" color="primary" type="submit" className={classes.inputField} startIcon={<AiOutlineGoogle />}>
-                            구글 회원가입
+                            구글 로그인
                          </Button>
                     </div>
                     <Snackbar open={open} autoHideDuration={3000}  className = {classes.snackbar}>

@@ -95,25 +95,25 @@ router.get('/logout',isLoggedIn ,(req, res, next) => {
 router.get('/kakao', passport.authenticate('kakao'));
 
 router.get('/kakao/callback', passport.authenticate('kakao', {
-    failureRedirect: 'http://localhost:3000',
+    failureRedirect: 'https://recordmyday.com',
 }), (req, res) => {
-    return res.redirect("http://localhost:3000")
+    return res.redirect("https://recordmyday.com")
 });
 
 router.get('/facebook', passport.authenticate('facebook'));
 
 router.get('/facebook/callback', passport.authenticate('facebook', {
-    failureRedirect: 'http://localhost:3000',
+    failureRedirect: 'https://recordmyday.com',
 }), (req, res) => {
-    return res.redirect("http://localhost:3000")
+    return res.redirect("https://recordmyday.com")
 });
 
 router.get('/google', passport.authenticate('google'));
 
 router.get('/google/callback', passport.authenticate('google', {
-    failureRedirect: 'http://localhost:3000',
+    failureRedirect: 'https://recordmyday.com',
 }), (req, res) => {
-    return res.redirect("http://localhost:3000")
+    return res.redirect("https://recordmyday.com")
 });
 
 
