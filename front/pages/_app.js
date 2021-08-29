@@ -4,12 +4,12 @@ import Head from 'next/head'; //Head component
 import '../styles.css'
 import wrapper from '../store/configureStore';
 
-const MyLifeManager = ({ Component }) => {
+const RecordMyDay = ({ Component }) => {
     return (
         <>
             <Head>
                 <meta charSet="utf-8"></meta>
-                <title>MyLifeManager
+                <title>RecordMyDay
                 </title>
             </Head>
             <Component />
@@ -17,8 +17,8 @@ const MyLifeManager = ({ Component }) => {
     );
 }
 
-MyLifeManager.propTypes = {
+RecordMyDay.propTypes = {
     Component: PropTypes.elementType.isRequired,
 }
 
-export default wrapper.withRedux(MyLifeManager);
+export default wrapper.withRedux(RecordMyDay);

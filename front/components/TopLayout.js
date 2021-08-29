@@ -30,7 +30,7 @@ export default function ButtonAppBar() {
       <AppBar position="static" className = {classes.appbar}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            <Link href = "/"><a className = {classes.mainTitle}>My Life Manager</a></Link>
+            <Link href = "/"><a className = {classes.mainTitle}>Record My Day</a></Link>
           </Typography>
         </Toolbar>
       </AppBar>
