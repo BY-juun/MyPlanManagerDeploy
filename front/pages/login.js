@@ -141,11 +141,6 @@ const login = () => {
                         {logInError}
                         </Alert>
                     </Snackbar>
-                    <Snackbar open={errorUser} autoHideDuration={3000} onClose={handleClose} className = {classes.snackbar}>
-                        <Alert onClose={handleClose} severity="error">
-                        이미 로그인 되어 있습니다.
-                        </Alert>
-                    </Snackbar>
                 </div>
             <BottomLayout value = {'login'}></BottomLayout>
         </>
