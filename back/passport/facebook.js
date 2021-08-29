@@ -22,7 +22,6 @@ module.exports = () => {
           nickname: profile.displayName,
           snsId: profile.id,
           provider: 'facebook',
-          color : nickcolor,
         });
         done(null, newUser);
       }
