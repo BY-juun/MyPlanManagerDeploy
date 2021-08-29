@@ -8,7 +8,7 @@ module.exports = () => {
   passport.use(new FacebookStrategy({ 
     clientID: process.env.FACEBOOK_ID,
     clientSecret : process.env.FACEBOOK_PWD,
-    callbackURL: 'http://localhost:3060/user/facebook/callback',
+    callbackURL: 'https://api.recordmyday.com/user/facebook/callback',
   }, async (accessToken, refreshToken, profile, done) => {
     try {
       const exUser = await User.findOne({
