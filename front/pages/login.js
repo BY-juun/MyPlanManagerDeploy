@@ -15,6 +15,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 import wrapper from "../store/configureStore";
 import { END } from 'redux-saga';
 import axios from 'axios';
+import { backUrl } from '../config/config';
 
 const useStyles = makeStyles((theme) => ({
     mainWrapper: {
@@ -116,17 +117,17 @@ const login = () => {
                     </div>
                 </form>
                     <div className={classes.inputWrapper}>
-                        <Button href="13.125.239.88/user/kakao" variant="outlined" size="medium" color="primary" type="submit" className={classes.inputField} startIcon={<RiKakaoTalkLine />}>
+                        <Button href={`${backUrl}/user/kakao`} variant="outlined" size="medium" color="primary" type="submit" className={classes.inputField} startIcon={<RiKakaoTalkLine />}>
                             카카오톡 회원가입
                         </Button>
                     </div>
                     <div sclassName={classes.inputWrapper}>
-                        <Button href="13.125.239.88/user/facebook" variant="outlined" size="medium" color="primary" type="submit" className={classes.inputField} startIcon={<AiOutlineFacebook />}>
+                        <Button href={`${backUrl}/user/facebook`}variant="outlined" size="medium" color="primary" type="submit" className={classes.inputField} startIcon={<AiOutlineFacebook />}>
                             페이스북 회원가입
                         </Button>
                     </div>
                     <div className={classes.inputWrapper}>
-                        <Button href="13.125.239.88/user/google" variant="outlined" size="medium" color="primary" type="submit" className={classes.inputField} startIcon={<AiOutlineGoogle />}>
+                        <Button href={`${backUrl}/user/google`} variant="outlined" size="medium" color="primary" type="submit" className={classes.inputField} startIcon={<AiOutlineGoogle />}>
                             구글 회원가입
                          </Button>
                     </div>
