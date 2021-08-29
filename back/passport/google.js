@@ -20,7 +20,6 @@ module.exports = () => {
             nickname: profile.displayName,
             snsId: profile.id,
             provider: 'google',
-            color : nickcolor,
           });
           done(null, newUser);
         }
