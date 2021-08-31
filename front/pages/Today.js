@@ -40,7 +40,10 @@ const useStyles = makeStyles((theme) => ({
   },
   snackbar : {
     marginTop : "350px",
-},
+  },
+  chipp : {
+    marginBottom : "15px",
+  }
 }));
 
 const Today = () => {
@@ -72,7 +75,7 @@ const Today = () => {
       {User &&
         <div className={classes.TodayWrapper}>
           <h2>오늘의 일정!</h2>
-          <Chip label={dayinfo} color="primary" variant="outlined" />
+          <Chip className = {classes.chipp} label={dayinfo} color="primary" variant="outlined" />
           {!scheduleArr &&
             <div className={classes.noSchedule}>
               <AlarmOffIcon className={classes.icon} />

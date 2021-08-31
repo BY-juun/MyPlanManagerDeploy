@@ -42,8 +42,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: "80px",
     },
     mainWrapper: {
-        border: "1px solid #3f51b5", 
-        marginTop: "15px", 
+        border: "1px solid #3f51b5",  
         marginLeft: "15px", 
         marginRight: "15px", 
         borderRadius: "15px",
