@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
   TodayWrapper: {
     textAlign: "center",
     marginTop: "30px",
-    height: "900px",
   },
   icon: {
     color: "#f48fb1",
