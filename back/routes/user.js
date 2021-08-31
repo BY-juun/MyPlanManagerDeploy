@@ -108,7 +108,9 @@ router.get('/facebook/callback', passport.authenticate('facebook', {
     return res.redirect("https://recordmyday.com")
 });
 
-router.get('/google', passport.authenticate('google'));
+router.get('/google', passport.authenticate('google',{
+    scope : ['profile']
+}));
 
 router.get('/google/callback', passport.authenticate('google', {
     failureRedirect: 'https://recordmyday.com',
