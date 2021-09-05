@@ -26,7 +26,7 @@ function Alert(props) {
 const useStyles = makeStyles((theme) => ({
   mainWrapper: {
     textAlign: "center",
-    marginTop: "100px",
+    marginTop: "30px",
   },
   wrapper: {
     marginTop: "15px",
